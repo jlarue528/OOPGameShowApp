@@ -10,6 +10,6 @@
         <li class="space"> </li>
         <li class="hide letter y">y</li>
         <li class="hide letter o">o</li>
-        <li class="hide letter u">u</li>
+        <li class="hide letter lu">u</li>
     </ul>
 </div>
