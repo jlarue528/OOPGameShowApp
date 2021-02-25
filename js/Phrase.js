@@ -8,23 +8,25 @@
     }
 
     addPhraseToDisplay() {
-        //create one list item for each letter
-        //loop through phrase to do this
         let phrase = this.phrase;
+        //Looping through the letters of the phrase
         for(let i = 0; i < phrase.length; i++ ) {
-            //list item you want to add
-            let letterListItem = document.createElement('li'); 
-            //where will you add it to - parent element
-            let parent = document.querySelector('#phrase ul')
-            //create list item for each letter [i]
-            parent.appendChild(letterListItem)[i];
-
+            //Create new list item
+            let letterListItem = document.createElement('li');
+            //Select Parent Element
+            const parent = document.querySelector('#phrase ul'); 
+           
+            //conditional statement that evaluates if the letter is ' ' then
+            // add a new element and give it the className space
+            // All other conditions will create a letter list item with the class
+            // hide letter {letter}
             if(phrase[i] === ' ') {
-                letterListItem.setAttribute('class', 'space')
+                parent.appendChild(letterListItem)
+                letterListItem.className = 'space';
             } else {
-                letterListItem.setAttribute('class', `Hide Letter ${phrase[i]}`)
+                parent.appendChild(letterListItem)
+                letterListItem.className = `hide letter ${phrase[i]}`
             }
-            return letterListItem.innerHTML = `${phrase[i]}`
-        }    
+        }
     }
 };
