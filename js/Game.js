@@ -12,8 +12,7 @@ class Game {
             {phrase: 'you are amazing'}, 
             {phrase: 'love yourself'}
         ];
-        this.activePhase = null;
-        //this.startGame();
+        this.activePhrase = null;
     }
 
     getRandomPhrase () {
@@ -40,11 +39,16 @@ class Game {
 
         //selected phrase object
         //passing in string to new Phrase 
+  
         let startPhrase = new Phrase(randomPhrase.phrase);
-        //returns selected phrase object
+        console.log(startPhrase);
+        //returns phrase object
+        
+        //applying .addPhraseToDisplay Method to on phrase object
+        startPhrase.addPhraseToDisplay();
+        
 
         //apply addPhraseToDisplay() to selected phrase object
-        return startPhrase.addPhraseToDisplay();
         
         
         //The selected phrase should be stored in the Game’s `activePhrase` property, so it can be
