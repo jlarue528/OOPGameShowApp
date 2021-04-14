@@ -34,8 +34,7 @@ class Game {
         const selectedPhrase = this.getRandomPhrase();
         selectedPhrase.addPhraseToDisplay();
 
-        this.activePhrase = selectedPhrase.phrase;
-        return selectedPhrase.phrase;
+        return this.activePhrase = selectedPhrase;
     }
 
     

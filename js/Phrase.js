@@ -25,7 +25,7 @@
     }
 
     checkLetter(letter) {
-        const activeGamePhrase = game.activePhrase.phrase;
+        const activeGamePhrase = game.activePhrase;
         
         let phraseCharacters = [];
             for(let i = 0; i < activeGamePhrase.length; i++) {
