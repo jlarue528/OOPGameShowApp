@@ -5,53 +5,22 @@
 class Game {
     constructor () {
         this.missed = 0;
-        this.phrases = [
-            {phrase: 'you can do it'}, 
-            {phrase: 'do not give up'}, 
-            {phrase: 'believe in yourself'}, 
-            {phrase: 'you are amazing'}, 
-            {phrase: 'love yourself'}
-        ];
+        this.phrases = this.createPhrases();
         this.activePhrase = null;
     }
 
-    getRandomPhrase () {
-        const phrases = this.phrases;
-
-        let randomNumber = Math.floor(Math.random() * phrases.length);
-        let randomPhrase = this.phrases[randomNumber];
-        return randomPhrase
+    createPhrases() {
+        const phrases = [
+           new Phrase('Whoever said orange is the new pink was seriously disturbed.'), 
+           new Phrase('You must always have faith in people. And, most importantly, you must always have faith in yourself.'),
+           new Phrase('You Need To Have A Little More Faith In People, You Might Be Surprised'),
+           new Phrase('ou Hold More Cards Than You Think You Do'),
+           new Phrase('believe in yourself')
+       ]
+       return phrases;
     }
 
-    startGame() {
-        //hides the start screen overlay
-        const overlay = document.getElementById('overlay');
-        overlay.style.visibility = 'hidden';
-
-        //calls the `getRandomPhrase()` method to select a Phrase object from the Game
-        // object’s array of phrases,
-        let randomPhrase = this.getRandomPhrase();
-        //returns object
-    
-        //then adds the phrase to the gameboard by calling the
-        //`addPhraseToDisplay()` method (which is a method on the Phrase class) on the selected Phrase
-        //object. 
-
-        //selected phrase object
-        //passing in string to new Phrase 
-  
-        let startPhrase = new Phrase(randomPhrase.phrase);
-        console.log(startPhrase);
-        //returns phrase object
+    getRandomPhrase() {
         
-        //applying .addPhraseToDisplay Method to on phrase object
-        startPhrase.addPhraseToDisplay();
-        
-
-        //apply addPhraseToDisplay() to selected phrase object
-        
-        
-        //The selected phrase should be stored in the Game’s `activePhrase` property, so it can be
-        //  easily accessed throughout the game.
     }
 }
