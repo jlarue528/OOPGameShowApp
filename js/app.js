@@ -41,8 +41,8 @@
 
 //Step 8
 const startButton = document.getElementById("btn__reset");
-startButton.addEventListener('click', (e) => {
-    e.target.game = new Game().startGame();
+startButton.addEventListener('click', () => {
+    game = new Game().startGame();
 });
 
 //Step 9

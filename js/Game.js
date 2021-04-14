@@ -6,7 +6,7 @@ class Game {
     constructor () {
         this.missed = 0;
         this.phrases = this.createPhrases();
-        this.activePhrase = this.startGame();
+        this.activePhrase = null;
     }
 
     createPhrases() {
@@ -34,9 +34,10 @@ class Game {
         const selectedPhrase = this.getRandomPhrase();
         selectedPhrase.addPhraseToDisplay();
 
-        console.log(selectedPhrase);
-        return selectedPhrase;
+        this.activePhrase = selectedPhrase.phrase;
+        return selectedPhrase.phrase;
     }
+
     
     // handleInteraction() {
 
