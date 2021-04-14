@@ -16,3 +16,16 @@
 // game.phrases.forEach((phrase,index) => {
 //     console.log(`Phrase - ${index} - phrase: ${phrase.phrase}`);
 // });
+
+//Step 5 Test
+// const logPhrase = (phrase) => {
+//     console.log(`Phrase - phrase: `, phrase.phrase);
+// };
+
+// const game = new Game();
+
+// logPhrase(game.getRandomPhrase());
+// logPhrase(game.getRandomPhrase());
+// logPhrase(game.getRandomPhrase());
+// logPhrase(game.getRandomPhrase());
+// logPhrase(game.getRandomPhrase());
