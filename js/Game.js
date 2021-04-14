@@ -11,9 +11,9 @@ class Game {
 
     createPhrases() {
         const phrases = [
-           new Phrase('Whoever said orange is the new pink was seriously disturbed'), 
-           new Phrase('You must always have faith in people. And, most importantly, you must always have faith in yourself'),
-           new Phrase('You Need To Have A Little More Faith In People, You Might Be Surprised'),
+           new Phrase('You can do it'), 
+           new Phrase('You got this'),
+           new Phrase('Here we go'),
            new Phrase('You Hold More Cards Than You Think You Do'),
            new Phrase('believe in yourself')
        ]
@@ -21,9 +21,9 @@ class Game {
     }
 
     getRandomPhrase() {
-        const phraseLength = this.phrases.length;
-        const randomNumber = Math.floor(Math.random() * phraseLength);
-        const randomPhrase = this.phrases[randomNumber];
+        const phrases = this.phrases;
+        const randomNumber = Math.floor(Math.random() * phrases.length);
+        const randomPhrase = phrases[randomNumber];
         return randomPhrase;
     }
 
@@ -34,6 +34,7 @@ class Game {
         const selectedPhrase = this.getRandomPhrase();
         selectedPhrase.addPhraseToDisplay();
 
+        console.log(selectedPhrase);
         return selectedPhrase;
     }
     
@@ -41,11 +42,23 @@ class Game {
 
     // }
 
-    // checkForWin() {
-
-    // }
+    checkForWin() {
+            const activeGamePhraseLength = game.activePhrase.phrase.length;
+            const letterBox = document.querySelectorAll('#phrase ul li');
+            let exposedLetter = [];
+            for(let i = 0; i < letterBox.length; i++) {
+                if(letterBox[i].className.includes('show letter') || letterBox[i].className.includes('space')) {
+                    const revealedLetters = exposedLetter.push(letterBox[i]);
+                    if(revealedLetters.length === activeGamePhraseLength) {
+                        return true
+                    } else {
+                        return false
+                    }
+                } 
+            } 
+        }
+    }
 
     // gameOver() {
 
     // }
-}
