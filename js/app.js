@@ -29,3 +29,7 @@
 // logPhrase(game.getRandomPhrase());
 // logPhrase(game.getRandomPhrase());
 // logPhrase(game.getRandomPhrase());
+
+//Step 6 test
+const game = new Game();
+game.getRandomPhrase().addPhraseToDisplay();
