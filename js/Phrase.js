@@ -15,7 +15,6 @@
             const parentElement = document.querySelector('#phrase ul');
             parentElement.appendChild(letterBox);
             letterBox.textContent = letter;
-            console.log(letterBox.textContent);
             
             if(letterBox.textContent !== " ") {
                 letterBox.className = `hide letter ${letter}`;

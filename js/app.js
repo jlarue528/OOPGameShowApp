@@ -30,6 +30,11 @@
 // logPhrase(game.getRandomPhrase());
 // logPhrase(game.getRandomPhrase());
 
-//Step 6 test
+// //Step 6 test
+// const game = new Game();
+// game.getRandomPhrase().addPhraseToDisplay();
+
+//Step 7
 const game = new Game();
-game.getRandomPhrase().addPhraseToDisplay();
+game.startGame();
+console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
