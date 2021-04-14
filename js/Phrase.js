@@ -25,32 +25,34 @@
     }
 
     checkLetter(letter) {
-        const activeGamePhrase = game.activePhrase;
-        
-        let phraseCharacters = [];
-            for(let i = 0; i < activeGamePhrase.length; i++) {
-                let phraseLetter = activeGamePhrase[i];
-                phraseCharacters.push(phraseLetter);
-            }
-
-            const letterCheck = phraseCharacters.filter(phraseCharacter => phraseCharacter === letter);
-            if(letterCheck.length !== 0) {
-                return true
+        let positiveCheck = [];
+        let nonMatched = [];
+        const activeGamePhrase = game.activePhrase.phrase;
+        for(let i = 0; i < activeGamePhrase.length; i++) {
+            if(activeGamePhrase[i] === letter) {
+                positiveCheck.push(activeGamePhrase[i]);
             } else {
-                return false
+                nonMatched.push(activeGamePhrase[i])
             }
+        } 
+
+        if(positiveCheck.length !== 0) {
+            return true
+        } else {
+            return false
+        }
     }
     
 
-    showMatchedLetter(letter) {
-        if(this.checkLetter(letter)) {
-            const activeGamePhrase = game.activePhrase.phrase;
-            const letterBox = document.querySelectorAll('#phrase ul li');
-            for(let i = 0; i < activeGamePhrase.length; i++) {
-                if(activeGamePhrase[i] === letter) {
-                    letterBox[i].className = `show letter ${letter}`;
-                }
-            }
-        }
-    }
+    // showMatchedLetter(letter) {
+    //     if(this.checkLetter(letter)) {
+    //         const activeGamePhrase = game.activePhrase.phrase;
+    //         const letterBox = document.querySelectorAll('#phrase ul li');
+    //         for(let i = 0; i < activeGamePhrase.length; i++) {
+    //             if(activeGamePhrase[i] === letter) {
+    //                 letterBox[i].className = `show letter ${letter}`;
+    //             }
+    //         }
+    //     }
+    // }
 }
