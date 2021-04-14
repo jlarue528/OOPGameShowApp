@@ -40,10 +40,10 @@
 // console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
 
 //Step 8
-
-let game;
 const startButton = document.getElementById("btn__reset");
 startButton.addEventListener('click', (e) => {
     game = new Game();
     game.startGame();
 });
+
+//Step 9

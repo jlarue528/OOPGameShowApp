@@ -31,6 +31,21 @@ class Game {
         const startScreenOverlay = document.getElementById('overlay');
         startScreenOverlay.style.visibility = 'hidden';
 
-        return this.getRandomPhrase().addPhraseToDisplay();
+        const selectedPhrase = this.getRandomPhrase();
+        selectedPhrase.addPhraseToDisplay();
+
+        return selectedPhrase;
     }
+    
+    // handleInteraction() {
+
+    // }
+
+    // checkForWin() {
+
+    // }
+
+    // gameOver() {
+
+    // }
 }

@@ -23,4 +23,26 @@
             } 
         };
     }
+
+    checkLetter(letter) {
+        const activeGamePhrase = game.activePhrase.phrase;
+        
+        let phraseCharacters = [];
+            for(let i = 0; i < activeGamePhrase.length; i++) {
+                let phraseLetter = activeGamePhrase[i];
+                phraseCharacters.push(phraseLetter);
+            }
+
+            const letterCheck = phraseCharacters.filter(phraseCharacter => phraseCharacter === letter);
+            if(letterCheck.length !== 0) {
+                return true
+            } else {
+                return false
+            }
+    }
+    
+
+    // showMatchedLetter() {
+
+    // }
  }
