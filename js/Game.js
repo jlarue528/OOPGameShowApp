@@ -74,19 +74,29 @@ class Game {
         }
 
         if(this.missed === 5 || activeLives.length === 0) {
-            //GAME OVER METHOD
+            this.gameOver();
             console.log('gameOver');
         } else {
             activeLives[0].src = 'file:///Users/jennifer/Desktop/OOPGameShowApp/OOPGameShowApp/images/lostHeart.png';
             this.missed += 1;
         }
-        console.log(this.missed);
     }
 
-    gameOver() {
-        const startScreenOverlay = document.getElementById('overlay');
-        startScreenOverlay.style.visibility = 'hidden';
-
+    gameOver(gameWon) {
+        gameWon = this.checkForWin();
+        console.log(gameWon);
+        const overlay = document.getElementById('overlay');
+        overlay.style.visibility = 'visible';
+        const title = document.getElementById("game-over-message")
+        if(gameWon) {
+            overlay.classList.remove('start');
+            overlay.classList.add('win');
+            title.innerHTML = 'YOU WON, CONGRATS!';
+        } else {
+            overlay.classList.remove('start');
+            overlay.classList.add('lose');
+            title.innerHTML = 'Better luck next time, you lost.';
+        }
     }
 }
 
