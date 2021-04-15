@@ -24,24 +24,24 @@
         };
     }
 
-    checkLetter(letter) {
-        let positiveCheck = [];
-        let nonMatched = [];
-        const activeGamePhrase = game.activePhrase.phrase;
-        for(let i = 0; i < activeGamePhrase.length; i++) {
-            if(activeGamePhrase[i] === letter) {
-                positiveCheck.push(activeGamePhrase[i]);
-            } else {
-                nonMatched.push(activeGamePhrase[i])
-            }
-        } 
+    // checkLetter(letter) {
+    //     let positiveCheck = [];
+    //     let nonMatched = [];
+    //     const activeGamePhrase = game.activePhrase.phrase;
+    //     for(let i = 0; i < activeGamePhrase.length; i++) {
+    //         if(activeGamePhrase[i] === letter) {
+    //             positiveCheck.push(activeGamePhrase[i]);
+    //         } else {
+    //             nonMatched.push(activeGamePhrase[i])
+    //         }
+    //     } 
 
-        if(positiveCheck.length !== 0) {
-            return true
-        } else {
-            return false
-        }
-    }
+    //     if(positiveCheck.length !== 0) {
+    //         return true
+    //     } else {
+    //         return false
+    //     }
+    // }
     
 
     // showMatchedLetter(letter) {
