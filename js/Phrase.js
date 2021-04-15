@@ -27,7 +27,7 @@
     checkLetter(letter) {
         let positiveCheck = [];
         let nonMatched = [];
-        const activeGamePhrase = game.activePhrase;
+        const activeGamePhrase = game.activePhrase.phrase;
         for(let i = 0; i < activeGamePhrase.length; i++) {
             if(activeGamePhrase[i] === letter) {
                 positiveCheck.push(activeGamePhrase[i]);
@@ -44,15 +44,13 @@
     }
     
 
-    // showMatchedLetter(letter) {
-    //     if(this.checkLetter(letter)) {
-    //         const activeGamePhrase = game.activePhrase.phrase;
-    //         const letterBox = document.querySelectorAll('#phrase ul li');
-    //         for(let i = 0; i < activeGamePhrase.length; i++) {
-    //             if(activeGamePhrase[i] === letter) {
-    //                 letterBox[i].className = `show letter ${letter}`;
-    //             }
-    //         }
-    //     }
-    // }
+    showMatchedLetter(letter) {
+        const activeGamePhrase = game.activePhrase.phrase;
+            const letterBox = document.querySelectorAll('#phrase ul li');
+            for(let i = 0; i < activeGamePhrase.length; i++) {
+                if(activeGamePhrase[i] === letter) {
+                    letterBox[i].className = `show letter ${letter}`;
+                }
+            }
+    }
 }
