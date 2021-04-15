@@ -32,6 +32,7 @@ class Game {
         startScreenOverlay.style.visibility = 'hidden';
 
         this.activePhrase = this.getRandomPhrase();
+        console.log(this.activePhrase);
         this.activePhrase.addPhraseToDisplay();
     }
 
@@ -40,23 +41,24 @@ class Game {
 
     // }
 
-    // checkForWin() {
-    //         const activeGamePhraseLength = game.activePhrase.phrase.length;
-    //         const letterBox = document.querySelectorAll('#phrase ul li');
-    //         let exposedLetter = [];
-    //         for(let i = 0; i < letterBox.length; i++) {
-    //             if(letterBox[i].className.includes('show letter') || letterBox[i].className.includes('space')) {
-    //                 const revealedLetters = exposedLetter.push(letterBox[i]);
-    //                 if(revealedLetters.length === activeGamePhraseLength) {
-    //                     return true
-    //                 } else {
-    //                     return false
-    //                 }
-    //             } 
-    //         } 
-    //     }
-    // }
+    checkForWin() {
+            const activeGamePhraseLength = this.activePhrase.phrase.length;
+            const letterBox = document.querySelectorAll('#phrase ul li');
+            let exposedLetters = [];
+            let hiddenLetters = [];
+            for(let i = 0; i < letterBox.length; i++) {
 
-    // gameOver() {
-
+                if(letterBox[i].className.startsWith('show') || letterBox[i].className.startsWith('space')) {
+                    exposedLetters.push(letterBox[i]);
+                } else {
+                    hiddenLetters.push(letterBox[i]);
+                }
+            }
+            
+            if(exposedLetters.length === activeGamePhraseLength) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
