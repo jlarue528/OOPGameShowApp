@@ -57,20 +57,45 @@ for(let i = 0; i < keys.length; i++) {
     });
 }
 
+// const phraseElement = document.querySelectorAll("#phrase ul li");
+// for(let i = 0; i < phraseElement.length; i++) {
+//     let listItem = phraseElement[i];
+//         listItem.parentNode.removeChild(listItem);
+// }
 
-const phraseElement = document.querySelectorAll("#phrase ul li");
-for(let i = 0; i < phraseElement.length; i++) {
-    let listItem = phraseElement[i];
-        listItem.parentNode.removeChild(listItem);
-}
+// const buttons = document.querySelectorAll("button");
+// for(let i = 0; i < buttons.length; i++) {
+//     buttons[i].disabled = false;
+//     buttons[i].className = 'key';
+// }
 
-const buttons = document.querySelectorAll("button");
-for(let i = 0; i < buttons.length; i++) {
-    buttons[i].disabled = false;
-    buttons[i].className = 'key';
-}
+// const restoredLives = document.querySelectorAll('#scoreboard ol li img')
+// for(let i = 0; i < restoredLives.length; i++) {
+//     restoredLives[i].src === 'images/liveHeart.png'
+// }
 
-const restoredLives = document.querySelectorAll('#scoreboard ol li img')
-for(let i = 0; i < restoredLives.length; i++) {
-    restoredLives[i].src === 'images/liveHeart.png'
-}
+
+// const overlay = document.getElementById('overlay');
+// if(overlay.className !== 'start') {
+   
+//     startButton.addEventListener('click', () => {
+//         const phraseElement = document.querySelectorAll("#phrase ul li");
+//         for(let i = 0; i < phraseElement.length; i++) {
+//             let listItem = phraseElement[i];
+//             listItem.parentNode.removeChild(listItem);
+//         }
+
+//         const buttons = document.querySelectorAll("button");
+//         for(let i = 0; i < buttons.length; i++) {
+//             buttons[i].disabled = false;
+//             buttons[i].className = 'key';
+//         }
+
+//         const restoredLives = document.querySelectorAll('#scoreboard ol li img')
+//         for(let i = 0; i < restoredLives.length; i++) {
+//             restoredLives[i].src === 'images/liveHeart.png'
+//         }
+//         game = new Game()
+//         game.startGame();
+//     });
+// }
