@@ -77,8 +77,7 @@ class Game {
         let activeLives = [];
         let usedLives = [];
     
-        for(let i = 0; i < lives.length; i++-1) {
-            console.log(lives[i].src)
+        for(let i = 0; i < lives.length; i++) {
             if(lives[i].src === 'file:///Users/jennifer/Desktop/OOPGameShowApp/OOPGameShowApp/images/liveHeart.png') {
                 activeLives.push(lives[i]);
             } else {
@@ -89,7 +88,7 @@ class Game {
         if(usedLives.length === 4) {
             this.gameOver();
         } else {
-            activeLives[0].src = 'file:///Users/jennifer/Desktop/OOPGameShowApp/OOPGameShowApp/images/liveHeart.png';
+            activeLives[0].src = 'file:///Users/jennifer/Desktop/OOPGameShowApp/OOPGameShowApp/images/lostHeart.png';
             this.missed += 1;
         }
     }
