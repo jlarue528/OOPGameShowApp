@@ -36,9 +36,21 @@ class Game {
     }
 
     
-    // handleInteraction() {
+    handleInteraction(button) {
+        button.disabled = true;
 
-    // }
+        if(this.activePhrase.checkLetter(button.textContent)) {
+            button.classList.add('chosen');
+            this.activePhrase.showMatchedLetter(button.textContent);
+            if(this.checkForWin()) {
+                this.gameOver();
+                // this.resetGameBoard();
+            };
+        } else {
+            button.classList.add('wrong');
+            this.removeLife();
+        }
+    }
 
     checkForWin() {
         const activeGamePhraseLength = this.activePhrase.phrase.length;
@@ -64,8 +76,8 @@ class Game {
         const lives = document.querySelectorAll('#scoreboard ol li img');
         let activeLives = [];
         let usedLives = [];
-
-        for(let i = 0; i < lives.length; i++) {
+    
+        for(let i = 0; i < lives.length; i++-1) {
             if(lives[i].src === 'file:///Users/jennifer/Desktop/OOPGameShowApp/OOPGameShowApp/images/liveHeart.png') {
                 activeLives.push(lives[i]);
             } else {
@@ -73,9 +85,8 @@ class Game {
             }
         }
 
-        if(this.missed === 5 || activeLives.length === 0) {
+        if(usedLives.length === 4) {
             this.gameOver();
-            console.log('gameOver');
         } else {
             activeLives[0].src = 'file:///Users/jennifer/Desktop/OOPGameShowApp/OOPGameShowApp/images/lostHeart.png';
             this.missed += 1;
@@ -84,28 +95,39 @@ class Game {
 
     gameOver(gameWon) {
         gameWon = this.checkForWin();
-        console.log(gameWon);
         const overlay = document.getElementById('overlay');
         overlay.style.visibility = 'visible';
         const title = document.getElementById("game-over-message")
+        
         if(gameWon) {
             overlay.classList.remove('start');
             overlay.classList.add('win');
             title.innerHTML = 'YOU WON, CONGRATS!';
+            // this.resetGameBoard();
         } else {
             overlay.classList.remove('start');
             overlay.classList.add('lose');
             title.innerHTML = 'Better luck next time, you lost.';
+            // this.resetGameBoard();
         }
     }
+
+    // resetGameBoard() {
+    //     const phraseElement = document.querySelectorAll("#phrase ul li");
+    //         for(let i = 0; i < phraseElement.length; i++) {
+    //             let listItem = phraseElement[i];
+    //             listItem.parentNode.removeChild(listItem);
+    //         }
+
+    //         const buttons = document.querySelectorAll("button");
+    //         for(let i = 0; i < buttons.length; i++) {
+    //             buttons[i].disabled = false;
+    //             buttons[i].className = 'key';
+    //         }
+
+    //         const restoredLives = document.querySelectorAll('#scoreboard ol li img')
+    //         for(let i = 0; i < restoredLives.length; i++) {
+    //             restoredLives[i].src === 'images/liveHeart.png'
+    //         }
+    // }
 }
-
-    /** 
-* Increases the value of the missed property 
-* Removes a life from the scoreboard 
-* Checks if player has remaining lives and ends game if player is out */ 
-
-// removeLife()`: This method removes a life from the scoreboard, by replacing one of the `liveHeart.png` images with a `lostHeart.png` image 
-// (found in the `images` folder) and increments the `missed` property. If the player has five missed guesses 
-// (i.e they're out of lives), 
-// then end the game by calling the `gameOver()` method. 

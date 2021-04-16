@@ -47,4 +47,30 @@ startButton.addEventListener('click', () => {
     game.startGame();
 });
 
-//Step 9
+//Step 10
+
+const keys = document.querySelectorAll("#qwerty .keyrow .key");
+
+for(let i = 0; i < keys.length; i++) {
+    keys[i].addEventListener('click', (e) => {
+        game.handleInteraction(e.target);
+    });
+}
+
+
+const phraseElement = document.querySelectorAll("#phrase ul li");
+for(let i = 0; i < phraseElement.length; i++) {
+    let listItem = phraseElement[i];
+        listItem.parentNode.removeChild(listItem);
+}
+
+const buttons = document.querySelectorAll("button");
+for(let i = 0; i < buttons.length; i++) {
+    buttons[i].disabled = false;
+    buttons[i].className = 'key';
+}
+
+const restoredLives = document.querySelectorAll('#scoreboard ol li img')
+for(let i = 0; i < restoredLives.length; i++) {
+    restoredLives[i].src === 'images/liveHeart.png'
+}
