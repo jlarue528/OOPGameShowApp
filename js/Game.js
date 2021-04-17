@@ -9,6 +9,10 @@ class Game {
         this.activePhrase = null;
     }
 
+    /**
+        * Creates phrases for use in game
+        * @return {array} An array of phrases that could be used in the game
+    */
     createPhrases() {
         const phrases = [
            new Phrase('You can do it'), 
@@ -20,6 +24,10 @@ class Game {
        return phrases;
     }
 
+    /**
+        * Selects random phrase from phrases property
+        * @return {Object} Phrase object chosen to be used
+    */
     getRandomPhrase() {
         const phrases = this.phrases;
         const randomNumber = Math.floor(Math.random() * phrases.length);
@@ -27,6 +35,9 @@ class Game {
         return randomPhrase;
     }
 
+    /**
+     *  Begins game by selecting a random phrase and displaying it to user
+     */
     startGame() {
         const startScreenOverlay = document.getElementById('overlay');
         startScreenOverlay.style.visibility = 'hidden';
@@ -35,7 +46,10 @@ class Game {
         this.activePhrase.addPhraseToDisplay();
     }
 
-    
+    /**
+        * Displays game over message
+        * @param {boolean} gameWon - Whether or not the user won the game
+    */
     handleInteraction(button) {
         button.disabled = true;
 
@@ -44,7 +58,6 @@ class Game {
             this.activePhrase.showMatchedLetter(button.textContent);
             if(this.checkForWin()) {
                 this.gameOver();
-                // this.resetGameBoard();
             };
         } else {
             button.classList.add('wrong');
@@ -52,6 +65,10 @@ class Game {
         }
     }
 
+    /**
+        * Checks for winning move
+        * @return {boolean} True if game has been won, false if game wasn't won
+    */
     checkForWin() {
         const activeGamePhraseLength = this.activePhrase.phrase.length;
         const letterBox = document.querySelectorAll('#phrase ul li');
@@ -72,62 +89,70 @@ class Game {
         }
     }
 
-    removeLife() {
-        const lives = document.querySelectorAll('#scoreboard ol li img');
-        let activeLives = [];
-        let usedLives = [];
-    
-        for(let i = 0; i < lives.length; i++) {
-            if(lives[i].src === 'file:///Users/jennifer/Desktop/OOPGameShowApp/OOPGameShowApp/images/liveHeart.png') {
-                activeLives.push(lives[i]);
-            } else {
-                usedLives.push(lives[i]);
-            }
+    /**
+        * Increases the value of the missed property
+        * Removes a life from the scoreboard
+        * Checks if player has remaining lives and ends game if player is out
+    */
+    removeLife = () => {
+        const lives = document.querySelectorAll(".tries img");
+        let heartsRemaining = this.missed;
+        
+        lives[heartsRemaining].src = "images/lostHeart.png";
+        this.missed++;
+        if (this.missed === 5) {
+          this.gameOver(false);
         }
+    };
 
-        if(usedLives.length === 4) {
-            this.gameOver();
-        } else {
-            activeLives[0].src = 'file:///Users/jennifer/Desktop/OOPGameShowApp/OOPGameShowApp/images/lostHeart.png';
-            this.missed += 1;
-        }
-    }
-
+    /**
+        * Displays game over message
+        * @param {boolean} gameWon - Whether or not the user won the game
+    */
     gameOver(gameWon) {
         gameWon = this.checkForWin();
         const overlay = document.getElementById('overlay');
-        overlay.style.visibility = 'visible';
         const title = document.getElementById("game-over-message")
+        overlay.style.visibility = 'visible';
         
         if(gameWon) {
             overlay.classList.remove('start');
             overlay.classList.add('win');
             title.innerHTML = 'YOU WON, CONGRATS!';
-            // this.resetGameBoard();
+            this.resetGameBoard();
         } else {
             overlay.classList.remove('start');
             overlay.classList.add('lose');
             title.innerHTML = 'Better luck next time, you lost.';
-            // this.resetGameBoard();
+            this.resetGameBoard();
         }
     }
 
-    // resetGameBoard() {
-    //     const phraseElement = document.querySelectorAll("#phrase ul li");
-    //         for(let i = 0; i < phraseElement.length; i++) {
-    //             let listItem = phraseElement[i];
-    //             listItem.parentNode.removeChild(listItem);
-    //         }
+    /**
+        * Resets gameboard by removing previous phrase elements & restores lives 
+     */
 
-    //         const buttons = document.querySelectorAll("button");
-    //         for(let i = 0; i < buttons.length; i++) {
-    //             buttons[i].disabled = false;
-    //             buttons[i].className = 'key';
-    //         }
+    resetGameBoard() {
+        const phraseElement = document.querySelectorAll("#phrase ul li");
+            for(let i = 0; i < phraseElement.length; i++) {
+                let listItem = phraseElement[i];
+                listItem.parentNode.removeChild(listItem);
+            }
 
-    //         const restoredLives = document.querySelectorAll('#scoreboard ol li img')
-    //         for(let i = 0; i < restoredLives.length; i++) {
-    //             restoredLives[i].src === 'images/liveHeart.png'
-    //         }
-    // }
+            const buttons = document.getElementsByClassName("key");
+            for(let i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = false;
+                
+                if(buttons[i].classList.contains("chosen")) {
+                    buttons[i].classList.remove("chosen")
+                } else if (buttons[i].classList.contains("wrong")) {
+                    buttons[i].classList.remove("wrong")
+                }
+            }
+
+            const restoredLives = document.querySelectorAll(".tries img");
+            for(let i = 0; i < restoredLives.length; i++) {
+                restoredLives[i].src = 'images/liveHeart.png'
+            }
+    }
 }

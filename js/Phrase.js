@@ -7,6 +7,9 @@
         this.phrase = phrase.toLowerCase();
     }
 
+    /**
+         *  Display phrase on game board
+    */
     addPhraseToDisplay () {
         const phrase = this.phrase;
         for(let i = 0; i < phrase.length; i++) {
@@ -24,6 +27,10 @@
         };
     }
 
+    /**
+        * Selects random phrase from phrases property
+        * @return {Object} Phrase object chosen to be used
+    */
     checkLetter(letter) {
         let positiveCheck = [];
         let nonMatched = [];
@@ -43,7 +50,10 @@
         }
     }
     
-
+    /**
+        * Displays passed letter on screen after a match is found
+        * @param (string) letter - Letter to display
+    */
     showMatchedLetter(letter) {
         const activeGamePhrase = game.activePhrase.phrase;
             const letterBox = document.querySelectorAll('#phrase ul li');
