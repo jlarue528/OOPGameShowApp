@@ -3,7 +3,7 @@
  * app.js */
 
 /**
-    * creates a new instance of the gameboard once start button is clicked
+    * creates a new instance of the gameboard once the start button is clicked
     * once start button is selected - a new game is started
 */
 let game;
