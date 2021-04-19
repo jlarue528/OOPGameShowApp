@@ -116,12 +116,12 @@ class Game {
         overlay.style.visibility = 'visible';
         
         if(gameWon) {
-            overlay.classList.remove('start');
+            overlay.classList.remove('start', 'lose');
             overlay.classList.add('win');
             title.innerHTML = 'YOU WON, CONGRATS!';
             this.resetGameBoard();
         } else {
-            overlay.classList.remove('start');
+            overlay.classList.remove('start', 'win');
             overlay.classList.add('lose');
             title.innerHTML = 'Better luck next time, you lost.';
             this.resetGameBoard();
